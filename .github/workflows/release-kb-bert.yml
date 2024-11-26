@@ -47,7 +47,13 @@ jobs:
       #  -----  setup uv and load cache   -----
       #----------------------------------------------
       - name: Set up uv
+<<<<<<< HEAD:.github/workflows/release-kb-bert.yml
         uses: astral-sh/setup-uv@v5
+||||||| parent of 68c0996 (ci(deps): bump the action to astral-sh/setup-uv to v4):.github/workflows/release.yml
+        uses: astral-sh/setup-uv@v3
+=======
+        uses: astral-sh/setup-uv@v4
+>>>>>>> 68c0996 (ci(deps): bump the action to astral-sh/setup-uv to v4):.github/workflows/release.yml
         with:
           version: ${{ env.UV_VERSION }}
           enable-cache: true
