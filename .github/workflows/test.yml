@@ -63,7 +63,7 @@ jobs:
         run: make install-dev
 
       - name: Run tests for coverage
-        run: make test-w-coverage-junit
+        run: make test-w-coverage cov_report=xml
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
@@ -72,15 +72,9 @@ jobs:
           # directory: ./coverage
           env_vars: OS,PYTHON
           fail_ci_if_error: true
-          files: ./junit.xml
           # flags: unittests
           # name: codecov-umbrella
           verbose: true
-      - name: Upload test results to Codecov
-        if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
 
   minimal:
     # This action chooses the oldest version of the dependencies permitted by Cargo.toml to ensure
