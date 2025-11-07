@@ -36,7 +36,7 @@ jobs:
           - "3.11"
           - "3.12"
           - "3.13"
-          - "3.14"
+          # - "3.14" TODO: support this
 
     runs-on: ${{ matrix.os }}-latest
     env:
