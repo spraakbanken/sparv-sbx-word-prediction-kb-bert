@@ -1,9 +1,9 @@
 id: swe-sbx-word-prediction-kb-bert
 name:
-    swe: Ordpredikation med KBLab/bert-base-swedish-cased för svenska
+    swe: Ordprediktion med KBLab/bert-base-swedish-cased för svenska
     eng: Word prediction with KBLab/bert-base-swedish-cased for Swedish
 short_description:
-    swe: Annotering av ord-predikation för varje text i en text.
+    swe: Annotering av ord-prediktion för varje ord i en text.
     eng: Word prediction annotations for each word in a text.
 task: word-prediction
 annotations:
