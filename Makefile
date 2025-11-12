@@ -57,8 +57,8 @@ help:
 	@echo ""
 
 PLATFORM := `uname -o`
-REPO := sparv-sbx-word-prediction
-PROJECT_SRC := word-prediction-kb-bert/src
+REPO := sparv-sbx-word-prediction-kb-bert
+PROJECT_SRC := src
 
 ifeq (${VIRTUAL_ENV},)
   VENV_NAME = .venv
@@ -72,8 +72,8 @@ default_cov := "--cov=${PROJECT_SRC}/"
 cov_report := "term-missing"
 cov := ${default_cov}
 
-all_tests := word-prediction-kb-bert/tests
-tests := word-prediction-kb-bert/tests
+all_tests := tests
+tests := tests
 
 info:
 	@echo "Platform: ${PLATFORM}"
@@ -171,16 +171,3 @@ snapshot-update:
 	${INVENV} pytest --snapshot-update
 
 ### === project targets below this line ===
-.PHONY: kb-bert-prepare-release
-kb-bert-prepare-release: word-prediction-kb-bert/CHANGELOG.md
-	cd word-prediction-kb-bert; $(MAKE) tests/requirements-testing.lock
-
-.PHONY: word-prediction-kb-bert/CHANGELOG.md
-word-prediction-kb-bert/CHANGELOG.md:
-	git cliff --unreleased --include-path "word-prediction-kb-bert/**/*" --include-path "examples/word-prediction-kb-bert/**/*" --prepend $@
-
-kb-bert-bumpversion:
-	cd word-prediction-kb-bert; $(MAKE) bumpversion $(MFLAGS)
-
-kb-bert-bumpversion-show:
-	cd word-prediction-kb-bert; $(MAKE) bumpversion-show

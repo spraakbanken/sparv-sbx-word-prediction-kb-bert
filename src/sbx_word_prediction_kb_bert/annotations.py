@@ -1,4 +1,4 @@
-from typing import Optional
+"""Sparv annotator function."""
 
 from sparv import api as sparv_api  # type: ignore [import-untyped]
 from sparv.api import (  # type: ignore [import-untyped]
@@ -15,11 +15,12 @@ TOK_SEP = " "
 
 
 def load_predictor(num_decimals_str: str) -> TopKPredictor:
+    """Load the predictor."""
     try:
         num_decimals = int(num_decimals_str)
     except ValueError as exc:
         raise sparv_api.SparvErrorMessage(
-            f"'{PROJECT_NAME}.num_decimals' must contain an 'int' got: '{num_decimals_str}'"  # noqa: E501
+            f"'{PROJECT_NAME}.num_decimals' must contain an 'int' got: '{num_decimals_str}'"
         ) from exc
 
     return TopKPredictor(num_decimals=num_decimals)
@@ -41,14 +42,15 @@ def predict_words__kb_bert(
     sentence: Annotation = Annotation("<sentence>"),
     num_predictions_str: str = Config(f"{PROJECT_NAME}.num_predictions"),
     num_decimals_str: str = Config(f"{PROJECT_NAME}.num_decimals"),
-    predictor_preloaded: Optional[TopKPredictor] = None,
+    predictor_preloaded: TopKPredictor | None = None,
 ) -> None:
+    """Predict word with a masked Bert model."""
     logger.info("predict_words")
     try:
         num_predictions = int(num_predictions_str)
     except ValueError as exc:
         raise sparv_api.SparvErrorMessage(
-            f"'{PROJECT_NAME}.num_predictions' must contain an 'int' got: '{num_predictions_str}'"  # noqa: E501
+            f"'{PROJECT_NAME}.num_predictions' must contain an 'int' got: '{num_predictions_str}'"
         ) from exc
 
     predictor = predictor_preloaded or load_predictor(num_decimals_str)
@@ -72,10 +74,11 @@ def predict_words__kb_bert(
 def run_word_prediction(
     predictor: TopKPredictor,
     num_predictions: int,
-    sentences,
+    sentences: list,
     token_word: list,
-    out_prediction_annotations,
+    out_prediction_annotations: list,
 ) -> None:
+    """Run the word prediction pipeline."""
     logger.info("run_word_prediction")
 
     logger.progress(total=len(sentences))  # type: ignore
@@ -84,15 +87,8 @@ def run_word_prediction(
         token_indices = list(sent)
         for token_index_to_mask in token_indices:
             sent_to_tag = TOK_SEP.join(
-                (
-                    "[MASK]"
-                    if token_index == token_index_to_mask
-                    else token_word[token_index]
-                )
-                for token_index in sent
+                ("[MASK]" if token_index == token_index_to_mask else token_word[token_index]) for token_index in sent
             )
 
-            predictions_scores = predictor.get_top_k_predictions(
-                sent_to_tag, k=num_predictions
-            )
+            predictions_scores = predictor.get_top_k_predictions(sent_to_tag, k=num_predictions)
             out_prediction_annotations[token_index_to_mask] = predictions_scores

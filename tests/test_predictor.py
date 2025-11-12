@@ -1,10 +1,10 @@
 from itertools import islice
-from typing import Dict, Tuple
 
 import pytest
-from sbx_word_prediction_kb_bert.predictor import TopKPredictor
 
-TEXTS: Dict[str, str] = {
+from sbx_word_prediction_kb_bert.predictor import TopKPredictor, _compute_context  # noqa: PLC2701
+
+TEXTS: dict[str, str] = {
     "short": "[MASK] åt glassen utanför kiosken .",
     "long-mask-middle": """
     Frisörbranschen påverkas väldigt negativt av den nuvarande situationen när kunderna inte kan komma till salongerna, vilket förstås gör att många frisörer är hotade av konkurs
@@ -43,14 +43,14 @@ def test_rounding(kb_bert_predictor: TopKPredictor) -> None:
     assert list(islice(actual.split("|"), 1, num_bars)) == expected
 
 
-def remove_scores(actual):
+def remove_scores(actual: str) -> str:
     return "|".join(x.split(":")[0] for x in actual.split("|"))
 
 
 def test_long_text(kb_bert_predictor: TopKPredictor) -> None:
     text = TEXTS["long-mask-middle"]
 
-    assert len(text.split(" ")) > 512
+    assert len(text.split(" ")) > 512  # noqa: PLR2004
     actual = kb_bert_predictor.get_top_k_predictions(text)
 
     actual = remove_scores(actual)
@@ -59,13 +59,9 @@ def test_long_text(kb_bert_predictor: TopKPredictor) -> None:
     assert actual == expected
 
 
-@pytest.mark.parametrize(
-    "texts_key, expected", [("short", (0, 35)), ("long-mask-middle", (462, 864))]
-)
-def test_compute_context(
-    texts_key: str, expected: Tuple[int, int], kb_bert_predictor: TopKPredictor
-) -> None:
-    actual_start, actual_end = kb_bert_predictor.compute_context(TEXTS[texts_key])
+@pytest.mark.parametrize("texts_key, expected", [("short", (0, 35)), ("long-mask-middle", (462, 864))])
+def test_compute_context(texts_key: str, expected: tuple[int, int]) -> None:
+    actual_start, actual_end = _compute_context(TEXTS[texts_key])
 
     expected_start, expected_end = expected
 

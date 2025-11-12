@@ -1,10 +1,12 @@
 import pytest
+from sparv.api import SparvErrorMessage  # type: ignore [import-untyped]
+from sparv_testing import MemoryOutput, MockAnnotation
+from syrupy.assertion import SnapshotAssertion
+
 from sbx_word_prediction_kb_bert.annotations import (
     load_predictor,
     predict_words__kb_bert,
 )
-from sparv.api import SparvErrorMessage  # type: ignore [import-untyped]
-from sparv_pipeline_testing import MemoryOutput, MockAnnotation
 
 
 def test_load_predictor_not_int_raises() -> None:
@@ -23,18 +25,12 @@ def test_predict_words__kb_bert__bad_int_raises() -> None:
         )
 
 
-def test_predict_words__kb_bert(snapshot) -> None:
+def test_predict_words__kb_bert(snapshot: SnapshotAssertion) -> None:
     output: MemoryOutput = MemoryOutput()
 
-    word = MockAnnotation(
-        name="<token:word>", values=["Han", "åt", "glassen", "utanför", "kiosken", "."]
-    )
-    sentence = MockAnnotation(
-        name="<sentence>", children={"<token:word>": [[0, 1, 2, 3, 4, 5]]}
-    )
+    word = MockAnnotation(name="<token:word>", values=["Han", "åt", "glassen", "utanför", "kiosken", "."])
+    sentence = MockAnnotation(name="<sentence>", children={"<token:word>": [[0, 1, 2, 3, 4, 5]]})
 
-    predict_words__kb_bert(
-        output, word, sentence, num_predictions_str="5", num_decimals_str="2"
-    )
+    predict_words__kb_bert(output, word, sentence, num_predictions_str="5", num_decimals_str="2")
 
     assert output.values == snapshot

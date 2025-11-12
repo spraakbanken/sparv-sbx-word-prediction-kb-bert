@@ -1,12 +1,48 @@
 [project]
-name = "sparv-sbx-word-prediction-workspace"
-dependencies = []
-requires-python = ">=3.9"
-version = "0.0.0"
+name = "sparv-sbx-word-prediction-kb-bert"
+version = "0.6.1"
+description = "A sparv plugin for computing word neighbours using a BERT model."
+authors = [
+    { name = "Språkbanken Text", email = "sb-info@svenska.gu.se" },
+]
+dependencies = [
+    "sparv >=5.3.1",
+    "transformers>=4.34.1",
+    "torch>=2.3.1",
+]
+license = "MIT"
+readme = "README.md"
+requires-python = ">= 3.11"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    # "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Unix",
+    "Operating System :: POSIX",
+    # "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.11",
+    # "Programming Language :: Python :: 3.12", TODO: fix this
+    "Programming Language :: Python :: Implementation :: CPython",
+    # "uncomment if you test on these interpreters:",
+    # "Programming Language :: Python :: Implementation :: IronPython",
+    # "Programming Language :: Python :: Implementation :: Jython",
+    # "Programming Language :: Python :: Implementation :: Stackless",
+    "Topic :: Utilities",
+]
 
 
-[tool.uv.workspace]
-members = ["word-prediction-kb-bert"]
+[project.entry-points."sparv.plugin"]
+sbx_word_prediction_kb_bert = "sbx_word_prediction_kb_bert"
+
+[project.urls]
+Homepage = "https://spraakbanken.gu.se"
+Repository = "https://github.com/spraakbanken/sparv-sbx-word-prediction"
+Issues = "https://github.com/spraakbanken/sparv-sbx-word-prediction/issues"
+
+[build-system]
+requires = ["uv_build>=0.9.6,<0.10.0"]
+build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
@@ -14,4 +50,13 @@ dev = [
     "pytest>=8.3.3",
     "ruff>=0.7.4",
     "mypy>=1.13.0",
+    "sparv-testing",
+    "syrupy>=5.0.0",
 ]
+
+[tool.uv.build-backend]
+module-name = "sbx_word_prediction_kb_bert"
+source-exclude = ["/.github", "/docs"]
+
+[tool.uv.sources]
+sparv-testing = { git = "https://github.com/spraakbanken/sparv-testing", rev = "v0.2.0" }
