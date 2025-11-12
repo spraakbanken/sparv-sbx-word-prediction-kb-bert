@@ -7,12 +7,12 @@
 [![Maturity badge - level 2](https://img.shields.io/badge/Maturity-Level%202%20--%20First%20Release-yellowgreen.svg)](https://github.com/spraakbanken/getting-started/blob/main/scorecard.md)
 [![Stage](https://img.shields.io/pypi/status/sparv-sbx-word-prediction-kb-bert)](https://pypi.org/project/sparv-sbx-word-prediction-kb-bert/)
 
-[![Codecov](https://codecov.io/gh/spraakbanken/sparv-sbx-word-prediction/coverage.svg)](https://codecov.io/gh/spraakbanken/sparv-sbx-word-prediction)
+[![Codecov](https://codecov.io/gh/spraakbanken/sparv-sbx-word-prediction-kb-bert/coverage.svg)](https://codecov.io/gh/spraakbanken/sparv-sbx-word-prediction-kb-bert)
 
-[![CI(check)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/check.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/check.yml)
-[![CI(release)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/release-kb-bert.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/release-kb-bert.yml)
-[![CI(scheduled)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/scheduled.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/scheduled.yml)
-[![CI(test)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/test.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction/actions/workflows/test.yml)
+[![CI(check)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/check.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/check.yml)
+[![CI(release)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/release-kb-bert.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/release-kb-bert.yml)
+[![CI(scheduled)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/scheduled.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/scheduled.yml)
+[![CI(test)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/test.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/test.yml)
 
 Plugin for applying bert masking as a [Sparv](https://github.com/spraakbanken/sparv-pipeline) annotation.
 

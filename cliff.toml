@@ -6,7 +6,7 @@
 # See documentation for more information on available options.
 [remote.github]
 owner = "spraakbanken"
-repo = "sparv-sbx-word-prediction"
+repo = "sparv-sbx-word-prediction-kb-bert"
 
 [changelog]
 # changelog header

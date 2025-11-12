@@ -37,8 +37,9 @@ sbx_word_prediction_kb_bert = "sbx_word_prediction_kb_bert"
 
 [project.urls]
 Homepage = "https://spraakbanken.gu.se"
-Repository = "https://github.com/spraakbanken/sparv-sbx-word-prediction"
-Issues = "https://github.com/spraakbanken/sparv-sbx-word-prediction/issues"
+Repository = "https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert"
+Issues = "https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/issues"
+Changelog = "https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["uv_build>=0.9.6,<0.10.0"]
