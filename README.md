@@ -10,8 +10,8 @@
 [![Codecov](https://codecov.io/gh/spraakbanken/sparv-sbx-word-prediction-kb-bert/coverage.svg)](https://codecov.io/gh/spraakbanken/sparv-sbx-word-prediction-kb-bert)
 
 [![CI(check)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/check.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/check.yml)
-[![CI(release)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/release-kb-bert.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/release-kb-bert.yml)
-[![CI(scheduled)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/scheduled.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/scheduled.yml)
+[![CI(release)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/release.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/release.yml)
+[![CI(rolling)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/rolling.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/rolling.yml)
 [![CI(test)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/test.yml/badge.svg)](https://github.com/spraakbanken/sparv-sbx-word-prediction-kb-bert/actions/workflows/test.yml)
 
 Plugin for applying bert masking as a [Sparv](https://github.com/spraakbanken/sparv-pipeline) annotation.
